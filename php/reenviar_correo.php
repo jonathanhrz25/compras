@@ -252,12 +252,12 @@ try {
     $mail->isSMTP();
     $mail->Host = 'mail.smtp2go.com';
     $mail->SMTPAuth = true;
-    $mail->Username = 'ticket@serva.com.mx';
-    $mail->Password = 'Serva123.*';
+    $mail->Username = '*****';
+    $mail->Password = '*****';
     $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
     $mail->Port = 2525;
 
-    $mail->setFrom('ticket@serva.com.mx', 'Sistema Compras');
+    $mail->setFrom('*****', 'Sistema Compras');
     foreach ($correos as $c) {
         $mail->addAddress($c);
     }
@@ -286,3 +286,4 @@ if ($mail_sent) {
     echo json_encode(["status" => "error", "message" => $mail_error ?? 'Error al enviar correo']);
 }
 exit;
+
