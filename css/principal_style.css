@@ -1,0 +1,571 @@
+/* Animación suave en collapse */
+.animate-collapse {
+    transition: all 0.4s ease-in-out;
+}
+
+.font-size-lg {
+    font-size: 40px;
+}
+
+.card-header-azul-claro {
+    background-color: #1E8BC3 !important;
+    color: #ffffff !important;
+}
+
+/* 🔹 Botones toggle */
+.btn-toggle {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: white !important;
+    /* ✅ fuerza texto blanco */
+    padding: 12px 20px;
+    /* altura normal */
+    border: none;
+    width: 95%;
+    transition: background 0.3s ease, transform 0.1s ease, color 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+    display: block;
+    margin-bottom: 10px;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #0d6efd, #0d6efd);
+    /* ✅ color base azul */
+}
+
+/* Estado activo */
+.btn-toggle.active-btn {
+    background: linear-gradient(90deg, #081856, #081856) !important;
+    /* azul oscuro */
+    color: white !important;
+    box-shadow: 0px 4px 10px rgba(15, 15, 15, 1);
+    transform: scale(1.02);
+    opacity: 1;
+}
+
+/* Hover */
+.btn-toggle:hover {
+    background: linear-gradient(90deg, #14e7f7da, #14e7f7da) !important;
+    transform: scale(1.03);
+    color: black !important;
+    box-shadow: 0px 0px 12px rgba(20, 231, 247, 0.7);
+}
+
+.thead th {
+    text-align: center;
+}
+
+/* 📱 Responsividad */
+@media (max-width: 768px) {
+    .btn-toggle {
+        font-size: 1rem;
+        padding: 10px;
+        margin-bottom: 12px;
+    }
+}
+
+@media (max-width: 480px) {
+    .btn-toggle {
+        font-size: 0.9rem;
+        padding: 8px;
+        margin-bottom: 15px;
+    }
+}
+
+/* 🔹 Acordeón animado con fade + slide + bounce */
+@keyframes bounceIn {
+    0% {
+        transform: translateY(-20px);
+        opacity: 0;
+    }
+
+    60% {
+        transform: translateY(5px);
+        opacity: 1;
+    }
+
+    80% {
+        transform: translateY(-3px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+.requisiciones-section {
+    max-height: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: max-height 0.6s ease, opacity 0.6s ease;
+}
+
+.requisiciones-section.show {
+    max-height: 2000px;
+    /* suficiente para mostrar todo */
+    opacity: 1;
+    animation: bounceIn 0.6s ease;
+    /* 👈 animación de rebote */
+}
+
+
+/* 🔹 Botón de "Agregar nueva requisición" (verde) */
+.btn-agregar-requisicion {
+    background-color: #28a745 !important;
+    /* Color verde de Bootstrap */
+    background: linear-gradient(90deg, #28a745, #28a745) !important;
+    /* Gradiente verde */
+    color: white !important;
+}
+
+/* Hover para el botón verde */
+.btn-agregar-requisicion:hover {
+    background: linear-gradient(90deg, #14e7f7da, #14e7f7da) !important;
+    transform: scale(1.03);
+    color: black !important;
+    box-shadow: 0px 0px 12px rgba(40, 167, 69, 0.7);
+}
+
+/* Estado activo para el botón verde */
+.btn-agregar-requisicion.active-btn {
+    background: linear-gradient(90deg, #081856, #081856) !important;
+    color: white !important;
+    box-shadow: 0px 4px 10px rgba(15, 15, 15, 1);
+    transform: scale(1.02);
+    opacity: 1;
+}
+
+.card.confirmada {
+    opacity: 0.9;
+    border: 2px solid #28a745;
+    /* Verde */
+}
+
+.card.confirmada .form-control:disabled,
+.card.confirmada .btn:disabled {
+    background-color: #f8f9fa !important;
+    cursor: not-allowed;
+}
+
+
+/* ==============================
+🎯 Botones requisiciones
+============================== */
+.modal-xl {
+    max-width: 95% !important;
+}
+
+.botones-requisiciones .btn-toggle {
+    transition: all 0.3s ease;
+}
+
+.botones-requisiciones.compacto {
+    margin-bottom: 0.5rem;
+}
+
+.botones-requisiciones.compacto .btn-toggle {
+    padding: 0.5rem 0.75rem !important;
+    font-size: 0.85rem !important;
+    border-radius: 0.5rem;
+}
+
+.botones-requisiciones.compacto i {
+    font-size: 1.2rem !important;
+}
+
+/* 🎨 Colores dinámicos del select según el estado */
+.estado-entrega.bg-pendiente {
+    background-color: #fdff74ff !important;
+    color: #555 !important;
+}
+
+.estado-entrega.bg-recibido {
+    background-color: #198754 !important;
+    color: white !important;
+}
+
+.estado-entrega.bg-rechazado {
+    background-color: #dc3545 !important;
+    color: white !important;
+}
+
+
+/* ==============================
+🎯 TABLA DE REQUISICIONES CONFIRMADAS RESPONSIVA
+============================== */
+@media (max-width: 768px) {
+    #tablaConfirmadas_wrapper {
+        width: 100% !important;
+        overflow-x: auto;
+        -webkit-overflow-scrolling: touch;
+    }
+
+    #tablaConfirmadas {
+        font-size: 0.78rem !important;
+        border-collapse: collapse;
+    }
+
+    #tablaConfirmadas thead {
+        display: none;
+    }
+
+    #tablaConfirmadas tbody tr {
+        display: block;
+        margin-bottom: 1rem;
+        border: 1px solid #dee2e6;
+        border-radius: 0.5rem;
+        padding: 0.5rem;
+        background-color: #fff;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+    }
+
+    #tablaConfirmadas tbody td {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.3rem 0.5rem;
+        border: none !important;
+        border-bottom: 1px solid #f0f0f0 !important;
+        text-align: left;
+        word-break: break-word;
+    }
+
+    #tablaConfirmadas tbody td:last-child {
+        border-bottom: none !important;
+    }
+
+    #tablaConfirmadas tbody td::before {
+        content: attr(data-label);
+        font-weight: 600;
+        color: #0d6efd;
+        flex: 0 0 45%;
+        text-align: left;
+    }
+
+    #tablaConfirmadas td img {
+        max-width: 40px;
+        height: auto;
+        border-radius: 5px;
+    }
+
+    .btn-ver-mas {
+        font-size: 0.75rem !important;
+        color: #0d6efd;
+        background: none;
+        border: none;
+        padding: 0;
+        text-decoration: underline;
+        cursor: pointer;
+    }
+
+    .card-body>.table-responsive {
+        overflow-x: visible !important;
+    }
+
+    /* 🩵 Ajuste descripción y motivo */
+    #tablaConfirmadas td[data-label="Descripción"],
+    #tablaConfirmadas td[data-label="Motivo"] {
+        white-space: normal !important;
+        word-wrap: break-word !important;
+        overflow-wrap: anywhere !important;
+        max-width: 100% !important;
+        text-overflow: ellipsis;
+    }
+
+    #tablaConfirmadas td[data-label="Descripción"] a,
+    #tablaConfirmadas td[data-label="Motivo"] a {
+        word-break: break-word;
+        white-space: normal;
+        display: inline-block;
+    }
+}
+
+/* 💬 Control de texto colapsado */
+/* 🔹 Estilo para el texto colapsado / expandido */
+.texto-completo {
+    display: none;
+}
+
+.colapsable {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.colapsable:hover {
+    background-color: #f8f9fa;
+}
+
+/* Cuando está expandido, mostrar el texto completo */
+.colapsable.mostrar .texto-colapsado {
+    display: none;
+}
+
+.colapsable.mostrar .texto-completo {
+    display: inline;
+}
+
+/* ==============================
+🎯 TABLA DE REQUISICIONES PENDIENTES RESPONSIVA
+============================== */
+/* Habilitar scroll vertical para ver todas las requisiciones pendientes */
+#seccionPendientes {
+    max-height: 75vh;
+    /* Ajustable, 75% de la altura visible */
+    overflow-y: auto !important;
+    padding-right: 10px;
+    /* Para que no se corte el contenido con el scrollbar */
+}
+
+/* Personalizar scroll vertical */
+#seccionPendientes::-webkit-scrollbar {
+    width: 8px;
+}
+
+#seccionPendientes::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+#seccionPendientes .card-body {
+    padding: 0.5rem;
+}
+
+/* Contenedor con scroll horizontal */
+#seccionPendientes .table-responsive {
+    display: block;
+    width: 100%;
+    overflow-x: auto !important;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+    /* Desplazamiento suave en iOS */
+    scrollbar-width: thin;
+    scrollbar-color: rgba(0, 0, 0, 0.2) transparent;
+}
+
+/* Estilo del scrollbar */
+#seccionPendientes .table-responsive::-webkit-scrollbar {
+    height: 8px;
+}
+
+#seccionPendientes .table-responsive::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+}
+
+/* Asegura que la tabla tenga suficiente ancho para generar el scroll */
+#seccionPendientes table {
+    min-width: 1100px;
+    /* 📏 Ajusta según tus columnas */
+    border-collapse: collapse;
+    white-space: nowrap;
+    /* Evita que el texto se parta y rompa las celdas */
+}
+
+/* Mejorar legibilidad en pantallas pequeñas */
+#seccionPendientes td,
+#seccionPendientes th {
+    vertical-align: middle;
+    text-align: left;
+    font-size: 0.85rem;
+    padding: 0.5rem;
+}
+
+/* Responsividad en móviles */
+@media (max-width: 768px) {
+    #seccionPendientes .table-responsive {
+        margin-bottom: 1rem;
+        border-radius: 0.5rem;
+    }
+
+    #seccionPendientes table {
+        min-width: 900px;
+        /* Mantén ancho mínimo menor en pantallas pequeñas */
+    }
+
+    #seccionPendientes td,
+    #seccionPendientes th {
+        font-size: 0.8rem;
+        padding: 0.4rem;
+    }
+
+    #seccionPendientes form {
+        display: flex;
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+
+    #seccionPendientes textarea {
+        min-height: 60px;
+    }
+}
+
+/* 🔹 Ajuste específico para "Descripción" y "Motivo" en TABLA PENDIENTES */
+#seccionPendientes table td[data-label="Descripción"],
+#seccionPendientes table td[data-label="Motivo"] {
+    white-space: normal !important;
+    word-wrap: break-word !important;
+    overflow-wrap: anywhere !important;
+    max-width: 100% !important;
+    text-overflow: ellipsis;
+}
+
+/* 💬 Control de texto colapsado 📌 (si aún no lo tienes en global, agréguelo) */
+.texto-completo {
+    display: none;
+}
+
+.colapsable {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.colapsable:hover {
+    background-color: #f8f9fa;
+}
+
+/* Cuando está expandido, mostrar el texto completo */
+.colapsable.mostrar .texto-colapsado {
+    display: none;
+}
+
+.colapsable.mostrar .texto-completo {
+    display: inline;
+}
+
+/* Estilo base: móviles (sin ancho fijo) */
+.acciones-col {
+    white-space: nowrap;
+    text-align: center;
+}
+
+/* Solo para pantallas grandes */
+@media (min-width: 768px) {
+    .acciones-col {
+        min-width: 550px;
+        max-width: 650px;
+        word-break: break-word;
+    }
+}
+
+.colapsable-td {
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.colapsable-td:hover {
+    background-color: #f8f9fa;
+}
+
+
+
+/* ==============================
+🎯 Gráficas responsivas
+============================== */
+
+/* Contenedor general */
+#contenedorGraficos {
+    margin-top: 2rem;
+    text-align: center;
+}
+
+/* 🔹 Gráfico principal */
+#grafico_area.grafico-principal {
+    width: 100%;
+    max-width: 1200px;
+    height: 800px;
+    margin: 0 auto;
+    border-radius: 12px;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+    background: #fff;
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+
+/* 🔹 Gráficos secundarios */
+.grafico-secundario {
+    width: 100%;
+    max-width: 900px;
+    height: 380px;
+    margin: 0 auto;
+    border-radius: 10px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    padding: 10px;
+    transition: all 0.3s ease;
+}
+
+/* ==============================
+📱 Responsividad
+============================== */
+
+/* Tablets medianas */
+@media (max-width: 992px) {
+    #grafico_area.grafico-principal {
+        height: 500px;
+        max-width: 900px;
+    }
+
+    .grafico-secundario {
+        height: 340px;
+    }
+}
+
+/* Dispositivos móviles */
+@media (max-width: 768px) {
+    #grafico_area.grafico-principal {
+        height: 420px;
+        width: 100%;
+        max-width: 100%;
+        padding: 8px;
+    }
+
+    .grafico-secundario {
+        height: 300px;
+        width: 100%;
+        max-width: 100%;
+        padding: 8px;
+    }
+}
+
+/* Teléfonos pequeños (ej. 360px - 480px) */
+@media (max-width: 480px) {
+    #grafico_area.grafico-principal {
+        height: 360px;
+    }
+
+    .grafico-secundario {
+        height: 280px;
+    }
+}
+
+
+/* ==========================
+🔹 Requisiciones desplegables
+========================== */
+.card {
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: box-shadow 0.3s ease;
+}
+
+.card:hover {
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    font-weight: 600;
+    background: #eaf1ff;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.card-header:hover {
+    background: #d9e8ff;
+}
+
+.toggle-icon {
+    transition: transform 0.3s ease;
+}
+
+.card-header.active .toggle-icon {
+    transform: rotate(180deg);
+}
